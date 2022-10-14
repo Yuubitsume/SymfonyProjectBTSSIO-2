@@ -1,0 +1,21 @@
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            </thead>
+            <h4 class="card-title">Notes élèves</h4>
+            <tbody>
+                {% for note_controle in note_controles %}
+                    <tr>
+                        <td id="th1">{{ note_controle.NomEleve }}</td>
+                        <td id="th2"> <a href="{{ path('app_eleve') }}">{{ note_controle.PrenomEleve }}</td>
+                        <td id="th3">{{ note_controle.NomMatiere }}</td>
+                        <td id="th4">{{ note_controle.Note}}</td>
+                        <td id="th5">{{ note_controle.Coefficient}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>   
+        </table>
+    </div>
+<div class="col-lg-12 text-center mt-5">
+    <a href="{{ path('app_note') }}" class="text-danger">Ajouter une note</a>
+</div>
