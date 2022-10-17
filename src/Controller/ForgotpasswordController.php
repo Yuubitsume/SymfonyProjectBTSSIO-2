@@ -17,7 +17,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class ForgotpasswordController extends AbstractController
 {
     #[Route('/forgotpassword', name: 'app_forgotpassword')]
-    public function changePassword(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function changePassword(Request $request, UserPasswordHasherInterface $userPasswordHasher, LoginAuthenticator $loginAuthenticator, EntityManagerInterface $entityManager): Response
     {
         {
             $user = $this->getUser();

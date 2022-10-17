@@ -35,7 +35,7 @@ class PasswordFormType extends AbstractType
                 new NotBlank([
                     'message' => 'Please enter a password',
                 ]),
-                /*
+                
                 new Length([
                     'min' => 8,
                     'minMessage' => 'Your password should be at least {{ limit }} characters',
@@ -62,7 +62,7 @@ class PasswordFormType extends AbstractType
                     'match' => true,
                     'message' => 'You need 1 Maj',
                 ]),
-                */
+                
             ],
         ]);
     }

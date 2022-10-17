@@ -20,12 +20,9 @@ class NoteController extends AbstractController
             $note = new NoteControle();
             $form = $this->createForm(NoteType::class, $note);
             $form->handleRequest($request);
-            var_dump($form->isValid());
-                exit();  
+
             if ($form->isSubmitted() && $form->isValid()) {
-                var_dump("ici");
-                exit();          
-                $note = $form->getData();     
+                        
                 $entityManager->persist($note);
                 $entityManager->flush();
                 // do anything else you need here, like send an email
