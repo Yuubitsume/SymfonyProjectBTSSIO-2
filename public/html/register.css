@@ -1,7 +1,8 @@
-.password-field{
-  margin: 5px;
+.password{
+  margin-top:2px;
+  margin-bottom: 10px;
 }
 
 .username{
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }

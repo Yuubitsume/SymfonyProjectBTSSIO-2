@@ -64,8 +64,14 @@ class RegistrationFormType extends AbstractType
                     'attr' => ['autocomplete' => 'new-password'],
                     'type' => PasswordType::class,
                     'required' => true,
-                    'first_options'  => ['label' => false],
-                    'second_options' => ['label' => false],
+                    'first_options'  => array(
+                        'label' => 'Password',
+                        'attr' => array('placeholder' => 'Enter password')
+                    ),
+                    'second_options' => array(
+                        'label' => 'Repeat Password',
+                        'attr' => array('placeholder' => 'Retype password')
+                    ),
                     'constraints' => [
                         new NotBlank([
                             'message' => 'Please enter a password',
