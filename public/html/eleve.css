@@ -1,3 +1,23 @@
-body{
-    width:30%;
+.card{
+    position: absolute;
+    top: 100px;
+    left: 700px;
+    height: 300px;
+    width: 500px;
+}
+
+.oui{
+    position: absolute;
+    top: 100px;
+    left: 700px;
+    height: 300px;
+    width: 500px;
+}
+
+.non{
+    position: absolute;
+    top: 100px;
+    left: 700px;
+    height: 300px;
+    width: 500px;
 }

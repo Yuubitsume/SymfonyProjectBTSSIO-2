@@ -2,11 +2,12 @@
 
 {% block title %}Hello {{ app.user.userIdentifier }} !{% endblock %}
 
-{% block body %}
 {% block stylesheets %}
     <link href="{{ asset('html/eleve.css') }}" rel="stylesheet" /> 
 {% endblock %}
-
+     {% include "menu/sidebar_index.html.twig" %}
+     {% include "menu/navbar_index.html.twig" %}
+{% block body %}
 <div class="row">
    <div class="col-12">
         <div class="card">
@@ -37,10 +38,9 @@
     </div>
 </div>
         {% if previous >= 0 %}
-            <a href="{{ path('app_eleve', { offset: previous }) }}">Previous</a>
+            <a href="{{ path('app_eleve', { offset: previous }) }}" id="oui">Previous</a>
         {% endif %}
         {% if next < eleves|length %}
-            <a href="{{ path('app_eleve', { offset: next }) }}">Next</a>
-        {% endif %}
-     
+            <a href="{{ path('app_eleve', { offset: next }) }}" id ="non">Next</a>
+        {% endif %}  
 {% endblock %}
