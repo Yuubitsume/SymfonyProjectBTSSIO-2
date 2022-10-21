@@ -5,9 +5,10 @@
 {% block stylesheets %}
     <link href="{{ asset('html/eleve.css') }}" rel="stylesheet" /> 
 {% endblock %}
-     {% include "menu/sidebar_index.html.twig" %}
-     {% include "menu/navbar_index.html.twig" %}
+    
 {% block body %}
+    {% include "menu/sidebar_index.html.twig" %}
+    {% include "menu/navbar_index.html.twig" %}
 <div class="row">
    <div class="col-12">
         <div class="card">
@@ -29,18 +30,17 @@
                             </thead>
                         </table>
                         {% endfor %}
-                         </tr>
-                        </tfoot>
-                    </table>
-                </div>
+                        </tr>
+                        </table>
+                    </div>
             </div>
         </div>
     </div>
 </div>
         {% if previous >= 0 %}
-            <a href="{{ path('app_eleve', { offset: previous }) }}" id="oui">Previous</a>
+            <a class="previous1" href="{{ path('app_eleve', { offset: previous }) }}">Previous</a>
         {% endif %}
         {% if next < eleves|length %}
-            <a href="{{ path('app_eleve', { offset: next }) }}" id ="non">Next</a>
+            <a class="next1" href="{{ path('app_eleve', { offset: next }) }}">Next</a>
         {% endif %}  
 {% endblock %}

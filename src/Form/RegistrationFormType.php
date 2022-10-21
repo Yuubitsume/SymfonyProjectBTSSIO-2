@@ -56,6 +56,17 @@ class RegistrationFormType extends AbstractType
                         ]),
                     ],
                 ])
+                ->add('pseudo', TextType::class, [
+                    'label' => false,
+                    'constraints' =>
+                    [
+                        new Length([
+                            'min' => 2,
+                            'minMessage' => 'Your password should be at least {{ limit }} characters',
+                            'max' => 40,
+                    ]),
+                    ],
+                ])
                     ->add('plainPassword', RepeatedType::class, [
                     // instead of being set onto the object directly,
                     // this is read and encoded in the controller
