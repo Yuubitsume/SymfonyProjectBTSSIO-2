@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -11,6 +14,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
+#[ApiResource]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -38,6 +42,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 50)]
     private ?string $pseudo = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: NoteControle::class)]
+    private Collection $noteControles;
+
+    public function __construct()
+    {
+        $this->noteControles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -141,6 +153,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPseudo(string $pseudo): self
     {
         $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, NoteControle>
+     */
+    public function getNoteControles(): Collection
+    {
+        return $this->noteControles;
+    }
+
+    public function addNoteControle(NoteControle $noteControle): self
+    {
+        if (!$this->noteControles->contains($noteControle)) {
+            $this->noteControles->add($noteControle);
+            $noteControle->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNoteControle(NoteControle $noteControle): self
+    {
+        if ($this->noteControles->removeElement($noteControle)) {
+            // set the owning side to null (unless already changed)
+            if ($noteControle->getUser() === $this) {
+                $noteControle->setUser(null);
+            }
+        }
 
         return $this;
     }
