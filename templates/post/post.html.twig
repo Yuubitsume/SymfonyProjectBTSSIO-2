@@ -11,9 +11,9 @@
                         <th id="t">coefficient</th>
                 {% for note_controle in note_controles %}
                     <tr>
-                        <td id="th1">{{ note_controle.NomEleve }}</td>
-                        <td id="th2"> <a href="{{ path('app_eleve') }}">{{ note_controle.PrenomEleve }}</td>
-                        <td id="th3">{{ note_controle.NomMatiere }}</td>
+                        <td id="th1">{{ note_controle.user.surname }}</td>
+                        <td id="th2"> <a href="{{ path('app_eleve') }}">{{ note_controle.user.username }}</td>
+                        <td id="th3">{{ note_controle.matiere.libellé }}</td>
                         <td id="th4">{{ note_controle.Note}}</td>
                         <td id="th5">{{ note_controle.Coefficient}}</td>
                     </tr>
